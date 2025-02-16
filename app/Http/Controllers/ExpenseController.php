@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
 {
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
         $expenses = $request->user()->expenses;
 
         return response()->json([
@@ -76,6 +77,30 @@ class ExpenseController extends Controller
 
         return response()->json([
             'message' => 'Expense deleted successfully',
+            'success' => true,
+        ]);
+    }
+
+    public function listCategory(Request $request, $category)
+    {
+        if (!in_array($category, ['comida', 'ocio', 'electronica', 'utilidades', 'ropa', 'salud', 'otros'])) {
+            return response()->json([
+                'message' => 'Invalid category',
+                'success' => false,
+            ], 400);
+        }
+
+        $expenses = $request->user()->expenses()->where('category', $category)->get();
+
+        if ($expenses->isEmpty()) {
+            return response()->json([
+                'message' => 'No expenses found',
+                'success' => false,
+            ], 404);
+        }
+
+        return response()->json([
+            'data' => $expenses,
             'success' => true,
         ]);
     }

@@ -10,3 +10,5 @@ Route::get('/expenses', [ExpenseController::class, 'index'])->middleware('auth:a
 Route::post('/expenses', [ExpenseController::class, 'store'])->middleware('auth:api');
 Route::put('/expenses/{id}', [ExpenseController::class, 'update'])->middleware('auth:api');
 Route::delete('/expenses/{id}', [ExpenseController::class, 'destroy'])->middleware('auth:api');
+
+Route::get('/expenses/{category}', [ExpenseController::class, 'listCategory'])->middleware('auth:api');
