@@ -1,66 +1,67 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Descripción proyecto
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este proyecto consiste en una API para poder gestionar los gastos personales. Permite a los usuarios registrarse, listar, editar y eliminar sus gastos.
 
-## About Laravel
+# Instalación
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+-   `git clone` del repositorio
+-   `composer install` para instalar las dependencias necesarias
+-   Crear archivo `.env` siguiendo `.env.example`
+-   Crear el archivo `database.sqlite` y `testing.sqlite` en `database`
+-   Levantar el proyecto `./vendor/bin/sail up -d`
+-   Generar clave `./vendor/bin/sail artisan key:generate`
+-   Aplicar las migraciones `./vendor/bin/sail artian migrate`
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# Historias de usuario
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+En todos los pasos excepto en el de registro es obligatorio poner el token en Headers.
 
-## Learning Laravel
+## Registro
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Al registrarse se obtiene el token necesario para realizar las demás operaciones. Tener en cuenta que este token dura 60 minutos.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+![Registro](public/images/registro.png)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Ver Usuario Activo
 
-## Laravel Sponsors
+Podemos ver los datos del usuario que estamos utilizando.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+![Usuario](public/images/usuario.png)
 
-### Premium Partners
+## Crear Gasto
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Creamos un gasto rellenando los campos necesarios. Las categorías disponibles son:
 
-## Contributing
+-   Comida
+-   Ocio
+-   Electrónica
+-   Utilidades
+-   Ropa
+-   Salud
+-   Otros
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+![Crear Gasto](public/images/crear.png)
 
-## Code of Conduct
+## Editar Gasto
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Editamos un gasto rellenando los campos necesarios.
 
-## Security Vulnerabilities
+![Editar Gasto](public/images/editar.png)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Listar Gastos
 
-## License
+Podemos listar todos los gastos que hemos creado.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+![Listar Gastos](public/images/listar.png)
+
+## Listar Gastos Por Categorias
+
+Podemos listar los gastos de una determinada categoría
+
+![Listar Por Categorias](public/images/categorias.png)
+
+## Borrar Gasto
+
+Borramos un gasto.
+
+![Borrar Gasto](public/images/borrar.png)
